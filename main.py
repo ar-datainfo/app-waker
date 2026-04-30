@@ -15,8 +15,8 @@ urls_env = os.environ.get("STREAMLIT_APP_URLS", "")
 STREAMLIT_URLS = [u.strip() for u in urls_env.split(",") if u.strip()]
 
 HUGGINGFACE_SPACES = [
-    "https://huggingface.co/spaces/anirudh-rs/ai-stem-separator",
-    "https://huggingface.co/spaces/anirudh-rs/collapse-signature",
+    "anirudh-rs/ai-stem-separator",
+    "anirudh-rs/collapse-signature",
 ]
 
 HF_TOKEN = os.environ.get("HF_TOKEN")
