@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import TimeoutException
+from huggingface_hub import HfApi
 
 # Load from environment (GitHub Secrets)
 urls_env = os.environ.get("STREAMLIT_APP_URLS", "")
@@ -39,13 +40,9 @@ def wake_streamlit(driver, url):
 
 def wake_huggingface(space_id):
     try:
-        url = f"https://huggingface.co/api/spaces/{space_id}/restart?factory=true"
-        headers = {"Authorization": f"Bearer {HF_TOKEN}"}
-        response = requests.post(url, headers=headers)
-        if response.status_code == 200:
-            print(f"✅ HuggingFace: {space_id} — wake request sent")
-        else:
-            print(f"⚠️ HuggingFace: {space_id} — status {response.status_code}: {response.text}")
+        api = HfApi(token=HF_TOKEN)
+        api.restart_space(repo_id=space_id)
+        print(f"✅ HuggingFace: {space_id} — restarted successfully")
     except Exception as e:
         print(f"❌ HuggingFace: {space_id} — error: {e}")
 
