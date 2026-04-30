@@ -2,12 +2,14 @@ name: Wake Apps
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # every 4 hours
-  workflow_dispatch:          # manual trigger
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
 
 jobs:
   wake:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
