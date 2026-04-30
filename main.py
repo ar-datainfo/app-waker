@@ -39,7 +39,7 @@ def wake_streamlit(driver, url):
 
 def wake_huggingface(space_id):
     try:
-        url = f"https://huggingface.co/api/spaces/{space_id}/restart"
+        url = f"https://huggingface.co/api/spaces/{space_id}/restart?factory=true"
         headers = {"Authorization": f"Bearer {HF_TOKEN}"}
         response = requests.post(url, headers=headers)
         if response.status_code == 200:
