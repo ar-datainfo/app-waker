@@ -67,6 +67,8 @@ def main():
     for space_id in HUGGINGFACE_SPACES:
         wake_huggingface(space_id)
 
+# Small update to refresh
+
 
 if __name__ == "__main__":
     main()
